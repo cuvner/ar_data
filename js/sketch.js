@@ -21,7 +21,7 @@ class RiverName {
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
         this.y += map(noise(this.noiseOffsetY), 0, 1, 0, 1, -15, 15);
-        this.noiseOffsetX += 0.01;
+        this.noiseOffsetX += 0.1;
         this.noiseOffsetY += 0.01;
         this.z -= 8; // Speed of coming towards the viewer
 
