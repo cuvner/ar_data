@@ -62,7 +62,7 @@ function setup() {
 
 function draw() {
    
-
+  arLayer.clear();
     // Update and display river names on the off-screen buffer
     for (let riverName of riverNames) {
         riverName.update();
