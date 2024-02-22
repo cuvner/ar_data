@@ -13,17 +13,17 @@ class RiverName {
     }
 
     reset() {
-        this.x = random(arLayer.width);
-        this.y = random(arLayer.height);
+        this.x = 0;
+        this.y = 0;
         this.z = random(200, 600); // Initial z position set further back
     }
 
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
-        this.y += map(noise(this.noiseOffsetY), 0, 1, -2, 2);
+        this.y += map(noise(this.noiseOffsetY), 0, 1, 0, 1, -15, 15);
         this.noiseOffsetX += 0.01;
         this.noiseOffsetY += 0.01;
-        this.z -= 2; // Speed of coming towards the viewer
+        this.z -= 8; // Speed of coming towards the viewer
 
         // Reset position when it moves out of view
         if (this.z < 1) {
@@ -32,7 +32,7 @@ class RiverName {
     }
 
     displayOn(buffer) {
-        let size = map(this.z, 0, arLayer.width, 16, 1);
+        let size = map(this.z, 0, arLayer.width, 32, 1);
         buffer.push();
         buffer.textSize(size);
         buffer.fill(0);
