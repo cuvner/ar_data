@@ -35,7 +35,7 @@ class RiverName {
         let size = map(this.z, 0, arLayer.width, 32, 1);
         buffer.push();
         buffer.textSize(size);
-        buffer.fill(0);
+        buffer.fill(255,0,0);
         buffer.text(this.name, this.x, this.y);
         buffer.pop();
     }
