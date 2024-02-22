@@ -13,8 +13,8 @@ class RiverName {
     }
 
     reset() {
-        this.x = arLayer.width/2;
-        this.y = arLayer.height/2;
+        this.x = random(arLayer.width);
+        this.y = random(arLayer.height);
         this.z = random(200, 600); // Initial z position set further back
     }
 
@@ -23,7 +23,7 @@ class RiverName {
         this.y += map(noise(this.noiseOffsetY), 0, 1, 0, 1, -15, 15);
         this.noiseOffsetX += 0.01;
         this.noiseOffsetY += 0.01;
-        this.z -= 5; // Speed of coming towards the viewer
+        this.z -= 8; // Speed of coming towards the viewer
 
         // Reset position when it moves out of view
         if (this.z < 1) {
