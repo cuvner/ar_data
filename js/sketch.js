@@ -59,8 +59,8 @@ function setup() {
 }
 
 function draw() {
-  background(255);
-
+  //background(255);
+  translate(width / 2, height / 2);
   // Update and display river names
   for (let riverName of riverNames) {
     riverName.update();
