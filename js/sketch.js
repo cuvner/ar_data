@@ -2,11 +2,12 @@ let riverNamesData = []; // Array to store the raw data from the file
 let riverNames = []; // Array to store RiverName objects
 const maxRiverNames = 50; // Maximum number of river names to display at once
 let customFont; // Variable to hold the custom font
+let arLayer;
 
 class RiverName {
   constructor(name) {
     this.name = name;
-    this.reset();
+    this.arLayer.reset();
     this.noiseOffsetX = random(1000);
     this.noiseOffsetY = random(1000);
   }
@@ -26,17 +27,15 @@ class RiverName {
 
     // Reset position when it moves out of view
     if (this.z < 1) {
-      this.reset();
+      this.arLayer.reset();
     }
   }
 
   display() {
     let size = map(this.z, 0, width, 32, 1);
-    textSize(size);
-    stroke(255, 0, 0);
-    strokeWeight(1);
-    fill(0);
-    text(this.name, this.x, this.y);
+    arLayer.textSize(size);
+    arLayer.fill(0);
+    arLayer.text(this.name, this.x, this.y);
   }
 }
 
@@ -46,11 +45,15 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1912, 1912, document.getElementById('canvas-ar')) // poster aspect
-	pixelDensity(1) // prevent 200+ PPI lag
-  textFont(customFont); // Set the custom font
-  textAlign(CENTER, CENTER);
-  frameRate(30); // Throttle the frame rate for performance
+  //createCanvas(1912, 1912, document.getElementById('canvas-ar')) // poster aspect
+	noCanvas()
+
+  arLayer = createGraphics(1912, 1912, document.getElementById('canvas-ar'))
+  
+  arLayer.pixelDensity(1) // prevent 200+ PPI lag
+  arLayer.textFont(customFont); // Set the custom font
+  arLayer.textAlign(CENTER, CENTER);
+  arLayer.frameRate(30); // Throttle the frame rate for performance
 
   // Initialize the first set of river names
   for (let i = 0; i < min(maxRiverNames, riverNamesData.length); i++) {
@@ -60,7 +63,7 @@ function setup() {
 
 function draw() {
   //background(255);
-  translate(width / 2, height / 2);
+  arLayer.translate(width / 2, height / 2);
   // Update and display river names
   for (let riverName of riverNames) {
     riverName.update();
