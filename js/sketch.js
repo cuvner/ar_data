@@ -26,7 +26,7 @@ class RiverName {
         this.z -= 10; // Speed of coming towards the viewer
 
         // Reset position when it moves out of view
-        if (this.z < 0) {
+        if (this.y < 1000) {
             this.reset();
         }
     }
