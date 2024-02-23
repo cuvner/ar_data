@@ -20,7 +20,7 @@ class RiverName {
 
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
-        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 50);
+        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 10);
         this.noiseOffsetX += 0.01;
         this.noiseOffsetY += 0.1;
         this.z -= 10; // Speed of coming towards the viewer
@@ -35,7 +35,7 @@ class RiverName {
         let size = map(this.z, 0, arLayer.width, 60, 1);
         buffer.push();
         buffer.textSize(size);
-        buffer.fill(255,0,0);
+        buffer.fill(0,0,0);
         buffer.text(this.name, this.x, this.y);
         buffer.pop();
     }
