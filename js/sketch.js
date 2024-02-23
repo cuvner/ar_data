@@ -15,13 +15,13 @@ class RiverName {
     reset() {
         this.x = random(arLayer.width/2);
         this.y = random(arLayer.height/2);
-        this.z = random(200, 600); // Initial z position set further back
+        this.z = random(400, 600); // Initial z position set further back
     }
 
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
-        this.y += map(noise(this.noiseOffsetY), 0, 1, -15, 15);
-        this.noiseOffsetX += 0.1;
+        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 4);
+        this.noiseOffsetX += 0.01;
         this.noiseOffsetY += 0.01;
         this.z -= 8; // Speed of coming towards the viewer
 
