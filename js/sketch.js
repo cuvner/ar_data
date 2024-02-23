@@ -20,7 +20,7 @@ class RiverName {
 
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
-        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 10);
+        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 15);
         this.noiseOffsetX += 0.01;
         this.noiseOffsetY += 0.01;
         this.z -= 2; // Speed of coming towards the viewer
@@ -35,7 +35,7 @@ class RiverName {
         let size = map(this.z, 0, arLayer.width, 32, 10);
         buffer.push();
         buffer.textSize(size);
-        buffer.fill(0,0,0);
+        buffer.fill(255,0,0);
         buffer.text(this.name, this.x, this.y);
         buffer.pop();
     }
@@ -49,7 +49,7 @@ function preload() {
 function setup() {
   noCanvas()
 
-	arLayer = createGraphics(1000, 2000, document.getElementById('canvas-ar'))
+	arLayer = createGraphics(1000, 1500, document.getElementById('canvas-ar'))
     arLayer.pixelDensity(1); // Set pixel density
     arLayer.textFont(customFont); // Set the custom font for the off-screen buffer
     arLayer.textAlign(CENTER, CENTER);
