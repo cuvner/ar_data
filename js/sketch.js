@@ -14,7 +14,7 @@ class RiverName {
 
     reset() {
         this.x = arLayer.width/2;
-        this.y = 50;
+        this.y = 150;
         this.z = random(100, 800); // Initial z position set further back
     }
 
@@ -26,7 +26,7 @@ class RiverName {
         this.z -= 2; // Speed of coming towards the viewer
 
         // Reset position when it moves out of view
-        if (this.y > 900) {
+        if (this.y > 1400) {
             this.reset();
         }
     }
@@ -35,7 +35,7 @@ class RiverName {
         let size = map(this.z, 0, arLayer.width, 32, 10);
         buffer.push();
         buffer.textSize(size);
-        buffer.fill(0,0,0);
+        buffer.fill(255,0,0);
         buffer.text(this.name, this.x, this.y);
         buffer.pop();
     }
@@ -48,7 +48,7 @@ function preload() {
 
 function setup() {
   noCanvas()
-
+  frameRate(1)
 	arLayer = createGraphics(1000, 1500, document.getElementById('canvas-ar'))
     arLayer.pixelDensity(1); // Set pixel density
     arLayer.textFont(customFont); // Set the custom font for the off-screen buffer
@@ -58,6 +58,18 @@ function setup() {
     for (let i = 0; i < min(maxRiverNames, riverNamesData.length); i++) {
         riverNames.push(new RiverName(riverNamesData[i]));
     }
+  
+      // Delay in milliseconds
+      let delayTime = 3000; // 2 seconds, for example
+
+      // Use setTimeout to delay the execution of the following code
+      setTimeout(() => {
+        // Code here will be executed after the delay
+        // For example, initializing objects, setting variables, etc.
+          frameRate(30); // Throttle the frame rate for performance
+    
+      }, delayTime);
+      
 }
 
 function draw() {
