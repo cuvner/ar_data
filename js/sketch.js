@@ -49,7 +49,7 @@ function preload() {
 function setup() {
   noCanvas()
 
-	arLayer = createGraphics(400, 400, document.getElementById('canvas-ar'))
+	arLayer = createGraphics(700, 700, document.getElementById('canvas-ar'))
     arLayer.pixelDensity(1); // Set pixel density
     arLayer.textFont(customFont); // Set the custom font for the off-screen buffer
     arLayer.textAlign(CENTER, CENTER);
