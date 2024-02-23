@@ -20,19 +20,19 @@ class RiverName {
 
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
-        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 4);
+        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 50);
         this.noiseOffsetX += 0.01;
         this.noiseOffsetY += 0.1;
         this.z -= 10; // Speed of coming towards the viewer
 
         // Reset position when it moves out of view
-        if (this.z < 100) {
+        if (this.z < 0) {
             this.reset();
         }
     }
 
     displayOn(buffer) {
-        let size = map(this.z, 0, arLayer.width, 48, 1);
+        let size = map(this.z, 0, arLayer.width, 60, 1);
         buffer.push();
         buffer.textSize(size);
         buffer.fill(255,0,0);
