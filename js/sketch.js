@@ -13,8 +13,8 @@ class RiverName {
     }
 
     reset() {
-        this.x = random(arLayer.width/2);
-        this.y = random(arLayer.height/2);
+        this.x = arLayer.width/2;
+        this.y = arLayer.height/2;
         this.z = random(400, 600); // Initial z position set further back
     }
 
