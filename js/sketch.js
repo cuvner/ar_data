@@ -15,27 +15,27 @@ class RiverName {
     reset() {
         this.x = arLayer.width/2;
         this.y = arLayer.height/4;
-        this.z = random(200, 100); // Initial z position set further back
+        this.z = random(100, 800); // Initial z position set further back
     }
 
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
-        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 10);
+        this.y += map(noise(this.noiseOffsetY), 0, 1, -4, 15);
         this.noiseOffsetX += 0.01;
-        this.noiseOffsetY += 0.1;
-        this.z -= 10; // Speed of coming towards the viewer
+        this.noiseOffsetY += 0.01;
+        this.z -= 2; // Speed of coming towards the viewer
 
         // Reset position when it moves out of view
-        if (this.y > 800) {
+        if (this.y > 600) {
             this.reset();
         }
     }
 
     displayOn(buffer) {
-        let size = map(this.z, 0, arLayer.width, 60, 1);
+        let size = map(this.z, 0, arLayer.width, 32, 1);
         buffer.push();
         buffer.textSize(size);
-        buffer.fill(0,0,0);
+        buffer.fill(255,0,0);
         buffer.text(this.name, this.x, this.y);
         buffer.pop();
     }
@@ -49,7 +49,7 @@ function preload() {
 function setup() {
   noCanvas()
 
-	arLayer = createGraphics(895, 1280, document.getElementById('canvas-ar'))
+	arLayer = createGraphics(800, 1000, document.getElementById('canvas-ar'))
     arLayer.pixelDensity(1); // Set pixel density
     arLayer.textFont(customFont); // Set the custom font for the off-screen buffer
     arLayer.textAlign(CENTER, CENTER);
