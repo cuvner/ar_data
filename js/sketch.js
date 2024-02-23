@@ -15,18 +15,18 @@ class RiverName {
     reset() {
         this.x = arLayer.width/2;
         this.y = arLayer.height/2;
-        this.z = random(400, 600); // Initial z position set further back
+        this.z = random(200, 100); // Initial z position set further back
     }
 
     update() {
         this.x += map(noise(this.noiseOffsetX), 0, 1, -2, 2);
         this.y += map(noise(this.noiseOffsetY), 0, 1, -20, 3);
         this.noiseOffsetX += 0.01;
-        this.noiseOffsetY += 0.05;
+        this.noiseOffsetY += 0.1;
         this.z -= 10; // Speed of coming towards the viewer
 
         // Reset position when it moves out of view
-        if (this.z == -100) {
+        if (this.z == -1000) {
             this.reset();
         }
     }
@@ -49,7 +49,7 @@ function preload() {
 function setup() {
   noCanvas()
 
-	arLayer = createGraphics(700, 700, document.getElementById('canvas-ar'))
+	arLayer = createGraphics(400, 400, document.getElementById('canvas-ar'))
     arLayer.pixelDensity(1); // Set pixel density
     arLayer.textFont(customFont); // Set the custom font for the off-screen buffer
     arLayer.textAlign(CENTER, CENTER);
